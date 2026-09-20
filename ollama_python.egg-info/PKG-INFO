@@ -1,0 +1,6 @@
+Metadata-Version: 2.4
+Name: ollama-python
+Version: 0.1.0
+Summary: Minimal Python chat client for Ollama
+Requires-Python: >=3.9
+Requires-Dist: ollama>=0.4.7

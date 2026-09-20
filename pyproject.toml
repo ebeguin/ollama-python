@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ollama-python"
+version = "0.1.0"
+description = "Minimal Python chat client for Ollama"
+requires-python = ">=3.9"
+dependencies = [
+    "ollama>=0.4.7",
+]
+
+[project.scripts]
+ollama-chat = "main:main"

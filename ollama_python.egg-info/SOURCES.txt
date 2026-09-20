@@ -1,0 +1,9 @@
+README.md
+main.py
+pyproject.toml
+ollama_python.egg-info/PKG-INFO
+ollama_python.egg-info/SOURCES.txt
+ollama_python.egg-info/dependency_links.txt
+ollama_python.egg-info/entry_points.txt
+ollama_python.egg-info/requires.txt
+ollama_python.egg-info/top_level.txt
