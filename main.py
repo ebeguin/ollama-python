@@ -1,10 +1,28 @@
 import os
+from pathlib import Path
 
 import ollama
 
 
-MODEL = os.getenv("OLLAMA_MODEL", "llama3.2")
-OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://127.0.0.1:11434")
+def load_properties(file_path: Path) -> dict[str, str]:
+    values: dict[str, str] = {}
+
+    if not file_path.exists():
+        return values
+
+    for line in file_path.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#") or "=" not in stripped:
+            continue
+        key, value = stripped.split("=", 1)
+        values[key.strip()] = value.strip()
+
+    return values
+
+
+PROPERTIES = load_properties(Path(__file__).with_name("config.properties"))
+MODEL = os.getenv("OLLAMA_MODEL", PROPERTIES.get("OLLAMA_MODEL", "llama3.2"))
+OLLAMA_HOST = os.getenv("OLLAMA_HOST", PROPERTIES.get("OLLAMA_HOST", "http://127.0.0.1:11434"))
 CLIENT = ollama.Client(host=OLLAMA_HOST)
 
 
